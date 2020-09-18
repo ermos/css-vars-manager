@@ -1,0 +1,29 @@
+{
+  "name": "css-vars-manager",
+  "version": "1.0.1",
+  "description": "CSS Variables Management with JS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ermos/cssvars.git"
+  },
+  "author": "Kilian SMITI <kilian@smiti.fr> (https://doplex.fr)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ermos/cssvars/issues"
+  },
+  "homepage": "https://github.com/ermos/cssvars#readme",
+  "dependencies": {
+    "axios": "^0.20.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  }
+}
