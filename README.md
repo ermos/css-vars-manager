@@ -13,16 +13,16 @@ npm i css-vars-manager
 
 ## 🔦 Usage
 
-- [SetColorsCollection()](#set-colors-collection)
-- [ImportVarsCollection()](#import-vars-collection)
-- [SetColor()](#set-color)
-- [UpdateColor()](#update-color)
-- [GetShadeFromHex()](#get-shade-from-hex)
-- [GetShadeFromVars()](#get-shade-from-vars)
+- [setColorsCollection()](#set-colors-collection)
+- [importVarsCollection()](#import-vars-collection)
+- [setColor()](#set-color)
+- [updateColor()](#update-color)
+- [getShadeFromHex()](#get-shade-from-hex)
+- [getShadeFromVar()](#get-shade-from-vars)
 
 -----------
 
-<h3 id="set-colors-collection">SetColorsCollection()</h3>
+<h3 id="set-colors-collection">setColorsCollection()</h3>
 
 > Allows to set multiple colors variables from an array.
 
@@ -30,7 +30,7 @@ npm i css-vars-manager
 ```javascript
 import { cssVars } from "css-vars-manager";
 
-cssVars.SetColorsCollection(
+cssVars.setColorsCollection(
     [
         {
           tag: "--main-color",  // # Variable's name
@@ -68,7 +68,7 @@ html {
 
 -----------
 
-<h3 id="import-vars-collection">ImportVarsCollection()</h3>
+<h3 id="import-vars-collection">importVarsCollection()</h3>
 
 > Allows to import a variables configuration from JSON file.
 
@@ -76,12 +76,12 @@ html {
 ```javascript
 import { cssVars } from "css-vars-manager";
 
-cssVars.ImportVarsCollection("/static/theme/dark.json");
+cssVars.importVarsCollection("/static/theme/dark.json");
 ```
 
 -----------
 
-<h3 id="set-color">SetColor()</h3>
+<h3 id="set-color">setColor()</h3>
 
 > Allows you to set a variable's color.
 
@@ -89,7 +89,7 @@ cssVars.ImportVarsCollection("/static/theme/dark.json");
 ```javascript
 import { cssVars } from "css-vars-manager";
 
-cssVars.SetColor(
+cssVars.setColor(
         {
           tag: "--main-color",  // # Variable's name
           color: "#000",        // # Variable's color
@@ -100,7 +100,7 @@ cssVars.SetColor(
 
 -----------
 
-<h3 id="update-color">UpdateColor()</h3>
+<h3 id="update-color">updateColor()</h3>
 
 > Allows you to update a variable's color (and shades).
 
@@ -108,12 +108,12 @@ cssVars.SetColor(
 ```javascript
 import { cssVars } from "css-vars-manager";
 
-cssVars.UpdateColor("--main-color", "#000");
+cssVars.updateColor("--main-color", "#000");
 ```
 
 -----------
 
-<h3 id="get-shade-from-hex">GetShadeFromHex()</h3>
+<h3 id="get-shade-from-hex">getShadeFromHex()</h3>
 
 > Allows you to create shade from a hex color.
 
@@ -123,12 +123,12 @@ import { cssVars } from "css-vars-manager";
 
 console.log(
     "#000 lighter :",
-    cssVars.GetShadeFromHex("#000", 2)
+    cssVars.getShadeFromHex("#000", 2)
 );
 
 console.log(
     "#000 darkness :",
-    cssVars.GetShadeFromHex("#000", -2)
+    cssVars.getShadeFromHex("#000", -2)
 );
 ```
 
@@ -140,7 +140,7 @@ console > #000 darkness : #000
 
 -----------
 
-<h3 id="get-shade-from-vars">GetShadeFromVars()</h3>
+<h3 id="get-shade-from-vars">getShadeFromVar()</h3>
 
 > Allows you to create shade from a variable's color (in hexadecimal).
 
@@ -155,12 +155,12 @@ import { cssVars } from "css-vars-manager";
 
 console.log(
     "--main-color lighter :",
-    cssVars.GetShadeFromVars("--main-color", 2)
+    cssVars.getShadeFromVar("--main-color", 2)
 );
 
 console.log(
     "--main-color darkness :",
-    cssVars.GetShadeFromVars("--main-color", -2)
+    cssVars.getShadeFromVar("--main-color", -2)
 );
 ```
 
