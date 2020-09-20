@@ -73,6 +73,16 @@ function _setShade (e: colorObject): void {
     }
 }
 
+function _getShadeFrom (hex: string, power: number): string {
+    if (power < 0) {
+        return color.darkness(hex, power);
+    } else if (power > 0) {
+        return color.lighter(hex, power);
+    } else {
+        return hex;
+    }
+}
+
 export const cssVars =  {
     SetColorsCollection (colors: colorObject[]): void {
         if (root === null) {
@@ -135,5 +145,17 @@ export const cssVars =  {
             }
         }
     },
+    GetShadeFromHex (hex: string, power: number): string {
+        return _getShadeFrom(hex, power)
+    },
+    GetShadeFromVars (vars: string, power: number): string | null {
+        if (root === null) {
+            _setRoot()
+            if (root === null) {
+                return null
+            }
+        }
+        return _getShadeFrom(root.getPropertyValue(vars), power)
+    }
 }
 

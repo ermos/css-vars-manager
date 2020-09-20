@@ -17,9 +17,9 @@
   "author": "Kilian SMITI <kilian@smiti.fr> (https://doplex.fr)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ermos/cssvars/issues"
+    "url": "https://github.com/ermos/css-vars-manager/issues"
   },
-  "homepage": "https://github.com/ermos/cssvars#readme",
+  "homepage": "https://github.com/ermos/css-vars-manager#readme",
   "dependencies": {
     "axios": "^0.20.0"
   },
