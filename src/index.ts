@@ -84,7 +84,7 @@ function _getShadeFrom (hex: string, power: number): string {
 }
 
 export const cssVars =  {
-    SetColorsCollection (colors: colorObject[]): void {
+    setColorsCollection (colors: colorObject[]): void {
         if (root === null) {
             _setRoot()
         }
@@ -99,7 +99,7 @@ export const cssVars =  {
             }
         })
     },
-    ImportVarsCollection (jsonFile: string): void {
+    importVarsCollection (jsonFile: string): void {
         if (root === null) {
             _setRoot()
         }
@@ -118,7 +118,7 @@ export const cssVars =  {
                 console.error("[css-vars-management] ", err)
             })
     },
-    UpdateColor (tag: string, color: string): void {
+    updateColor (tag: string, color: string): void {
         if (root === null) {
             _setRoot()
         }
@@ -133,7 +133,7 @@ export const cssVars =  {
             }
         }
     },
-    SetColor (e: colorObject): void {
+    setColor (e: colorObject): void {
         if (root === null) {
             _setRoot()
         }
@@ -145,10 +145,10 @@ export const cssVars =  {
             }
         }
     },
-    GetShadeFromHex (hex: string, power: number): string {
+    getShadeFromHex (hex: string, power: number): string {
         return _getShadeFrom(hex, power)
     },
-    GetShadeFromVars (vars: string, power: number): string | null {
+    getShadeFromVars (vars: string, power: number): string | null {
         if (root === null) {
             _setRoot()
             if (root === null) {
