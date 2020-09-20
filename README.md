@@ -15,12 +15,12 @@ npm i css-vars-manager
 
 List of methods :
 
-- [SetColorsCollection()](SetColorsCollection())
-- [ImportVarsCollection()](ImportVarsCollection())
-- [SetColor()](SetColor())
-- [UpdateColor()](UpdateColor())
-- [GetShadeFromHex()](GetShadeFromHex())
-- [GetShadeFromVars()](GetShadeFromVars())
+- [SetColorsCollection()](#SetColorsCollection())
+- [ImportVarsCollection()](#ImportVarsCollection())
+- [SetColor()](#SetColor())
+- [UpdateColor()](#UpdateColor())
+- [GetShadeFromHex()](#GetShadeFromHex())
+- [GetShadeFromVars()](#GetShadeFromVars())
 
 -----------
 
