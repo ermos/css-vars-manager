@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ermos/cssvars.git"
+    "url": "git+https://github.com/ermos/css-vars-manager.git"
   },
   "author": "Kilian SMITI <kilian@smiti.fr> (https://doplex.fr)",
   "license": "MIT",
