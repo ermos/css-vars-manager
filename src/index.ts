@@ -75,7 +75,7 @@ function _setShade (e: colorObject): void {
 
 function _getShadeFrom (hex: string, power: number): string {
     if (power < 0) {
-        return color.darkness(hex, power);
+        return color.darkness(hex, Math.abs(power));
     } else if (power > 0) {
         return color.lighter(hex, power);
     } else {
