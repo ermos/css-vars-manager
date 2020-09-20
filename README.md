@@ -13,18 +13,16 @@ npm i css-vars-manager
 
 ## 🔦 Usage
 
-List of methods :
-
-- [SetColorsCollection()](#SetColorsCollection())
-- [ImportVarsCollection()](#ImportVarsCollection())
-- [SetColor()](#SetColor())
-- [UpdateColor()](#UpdateColor())
-- [GetShadeFromHex()](#GetShadeFromHex())
-- [GetShadeFromVars()](#GetShadeFromVars())
+- [SetColorsCollection()](#set-colors-collection)
+- [ImportVarsCollection()](#import-vars-collection)
+- [SetColor()](#set-color)
+- [UpdateColor()](#update-color)
+- [GetShadeFromHex()](#get-shade-from-hex)
+- [GetShadeFromVars()](#get-shade-from-vars)
 
 -----------
 
-### SetColorsCollection()
+<h3 id="set-colors-collection">SetColorsCollection()</h3>
 
 > Allows to set multiple colors variables from an array.
 
@@ -70,7 +68,7 @@ html {
 
 -----------
 
-### ImportVarsCollection()
+<h3 id="import-vars-collection">ImportVarsCollection()</h3>
 
 > Allows to import a variables configuration from JSON file.
 
@@ -83,7 +81,7 @@ cssVars.ImportVarsCollection("/static/theme/dark.json");
 
 -----------
 
-### SetColor()
+<h3 id="set-color">SetColor()</h3>
 
 > Allows you to set a variable's color.
 
@@ -102,7 +100,7 @@ cssVars.SetColor(
 
 -----------
 
-### UpdateColor()
+<h3 id="update-color">UpdateColor()</h3>
 
 > Allows you to update a variable's color (and shades).
 
@@ -115,7 +113,7 @@ cssVars.UpdateColor("--main-color", "#000");
 
 -----------
 
-### GetShadeFromHex()
+<h3 id="get-shade-from-hex">GetShadeFromHex()</h3>
 
 > Allows you to create shade from a hex color.
 
@@ -142,7 +140,7 @@ console > #000 darkness : #000
 
 -----------
 
-### GetShadeFromVars()
+<h3 id="get-shade-from-vars">GetShadeFromVars()</h3>
 
 > Allows you to create shade from a variable's color (in hexadecimal).
 
