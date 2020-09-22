@@ -134,7 +134,7 @@ export const cssVars =  {
                 }
             })
             .catch(err => {
-                console.error("[css-vars-managemer] ", err)
+                console.error("[css-vars-manager] ", err)
             })
     },
     get (tag: string): string | null {

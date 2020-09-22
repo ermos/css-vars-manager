@@ -225,7 +225,7 @@ html {
 ```javascript
 import { cssVars } from "css-vars-manager";
 
-cssVars.importVarsCollection("/static/theme/dark.json");
+cssVars.importCollection("/static/theme/dark.json");
 ```
 
 #### Result
