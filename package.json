@@ -1,6 +1,6 @@
 {
   "name": "css-vars-manager",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "CSS Variables Management with JS",
   "keywords": [
     "css",
@@ -13,8 +13,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "publish": "tsc && npm publish"
+    "build": "tsc"
   },
   "files": [
     "dist"
