@@ -172,17 +172,34 @@ export const cssVars =  {
     }
 }
 
-export const darkMode = {
-    init (): void {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // dark mode
+let _darkFileURL: string | null = null;
+let _lightFileURL: string | null = null;
+
+function _setDarkMode () {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        if (_darkFileURL !== null) {
+            cssVars.importCollection(_darkFileURL)
         }
+    } else {
+        if (_lightFileURL !== null) {
+            cssVars.importCollection(_lightFileURL)
+        }
+    }
+}
+
+export const darkMode = {
+    init (lightFileURL: string, darkFileURL: string): void {
+        _lightFileURL = lightFileURL
+        _darkFileURL = darkFileURL
+        _setDarkMode()
     },
 
     watcher (): void {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            const newColorScheme = e.matches ? "dark" : "light";
-        });
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                _setDarkMode()
+            });
+        }
     }
 }
 

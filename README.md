@@ -34,9 +34,12 @@ key, with that we can generate shade of your color. Per default we generate zero
 you need to specify how many shade you want with using `shadeCount`'s key. For other type of css variable, you can simply use
 `value`'s key.
 
+- [cssVars](#css-vars)
+- [darkMode](#dark-mode)
+
 -----------
 
-# cssVars
+<h1 id="css-vars">cssVars</h1>
 
 ### Methods
 
@@ -303,4 +306,45 @@ console.log(
 ```
 console > --main-color lighter : #FFF
 console > --main-color darkness : #DDD
+```
+
+-----------
+
+<h1 id="dark-mode">darkMode</h1>
+
+### Methods
+
+- [init()](#init)
+- [watcher()](#watcher)
+
+-----------
+
+<h3 id="init">init()</h3>
+
+> Initialize dark mode module
+
+You need to specify two JSON files, one for dark theme and one for light theme,
+files need to use `varCollection`'s object structure.
+
+#### Example
+```javascript
+import { darkMode } from "css-vars-manager";
+
+darkMode.init(
+    "/static/template/light.json",
+    "/static/template/dark.json"
+)
+```
+
+-----------
+
+<h3 id="watcher">watcher()</h3>
+
+> Trigger dark mode change from user computer
+
+#### Example
+```javascript
+import { darkMode } from "css-vars-manager";
+
+darkMode.watcher()
 ```
