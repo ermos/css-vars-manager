@@ -118,7 +118,36 @@ export const cssVars =  {
                 console.error("[css-vars-management] ", err)
             })
     },
-    updateColorVar (tag: string, color: string): void {
+    getVar (tag: string): string | null {
+        if (root === null) {
+            _setRoot()
+        }
+        if (root !== null) {
+            return root.getPropertyValue(tag);
+        }
+        return null;
+    },
+    setVar (tag: string, value: string): void {
+        if (root === null) {
+            _setRoot()
+        }
+        if (root !== null) {
+            root.setProperty(tag, value);
+        }
+    },
+    setColor (e: colorObject): void {
+        if (root === null) {
+            _setRoot()
+        }
+        if (root !== null) {
+            root.setProperty(e.tag, e.color);
+            if (e.shadeCount !== undefined) {
+                collection.set(e.tag, e.shadeCount);
+                _setShade(e);
+            }
+        }
+    },
+    updateColor (tag: string, color: string): void {
         if (root === null) {
             _setRoot()
         }
@@ -130,18 +159,6 @@ export const cssVars =  {
                     color: color,
                     shadeCount: collection.get(tag),
                 });
-            }
-        }
-    },
-    setColorVar (e: colorObject): void {
-        if (root === null) {
-            _setRoot()
-        }
-        if (root !== null) {
-            root.setProperty(e.tag, e.color);
-            if (e.shadeCount !== undefined) {
-                collection.set(e.tag, e.shadeCount);
-                _setShade(e);
             }
         }
     },

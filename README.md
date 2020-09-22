@@ -13,12 +13,59 @@ npm i css-vars-manager
 
 ## 🔦 Usage
 
+- [setVar()](#set-var)
+- [getVar()](#set-var)
 - [setColorsCollection()](#set-colors-collection)
 - [importVarsCollection()](#import-vars-collection)
 - [setColor()](#set-color)
 - [updateColor()](#update-color)
 - [getShadeFromHex()](#get-shade-from-hex)
 - [getShadeFromVar()](#get-shade-from-vars)
+
+-----------
+
+<h3 id="set-var">setVar()</h3>
+
+> Allows you to push a variable.
+
+#### Example
+```javascript
+import { cssVars } from "css-vars-manager";
+
+cssVars.setVar("--interface-size", "1200px");
+```
+
+#### Result
+```css
+html {
+    --interface-size: "1200px";
+}
+```
+
+-----------
+
+<h3 id="set-var">getVar()</h3>
+
+> Get a variable's value.
+
+#### Example
+```css
+html {
+    --interface-size: "1200px";
+}
+```
+```javascript
+import { cssVars } from "css-vars-manager";
+
+console.log(
+    cssVars.getVar("--interface-size")
+);
+```
+
+#### Result
+```
+console > 1200px
+```
 
 -----------
 
