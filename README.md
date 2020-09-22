@@ -5,7 +5,7 @@ CSS Vars Manager is a ready to use CSS Variable's Manager using javascript.
 You can set variable dynamically and update them without write one thousand line of code.
 The libary offers a css variables importer, useful for a dark mode theme for example.
 
-## 🚀 Setting up
+## 🚀 Install
 
 ```
 npm i css-vars-manager
@@ -13,18 +13,44 @@ npm i css-vars-manager
 
 ## 🔦 Usage
 
-- [setVar()](#set-var)
-- [getVar()](#set-var)
-- [setColorsCollection()](#set-colors-collection)
-- [importVarsCollection()](#import-vars-collection)
-- [setColor()](#set-color)
-- [updateColor()](#update-color)
+The library contains two object that you can import on your project, `cssVars` to manage you're CSS variables and
+`darkMode` for working with browser dark mode feature. Let's see what you can make with this package.
+
+### Working
+
+all `cssVars`'s method work with a classic object's interface :
+
+```typescript
+ interface varsCollection {
+    tag: string
+    color?: string
+    value?: string
+    shadeCount?: number
+}
+```
+
+Objects need to contain `tag`'s key, this is you're css tag's name. If you want working with color, you need to use `color`'s
+key, with that we can generate shade of your color. Per default we generate zero shade,
+you need to specify how many shade you want with using `shadeCount`'s key. For other type of css variable, you can simply use
+`value`'s key.
+
+-----------
+
+# cssVars
+
+### Methods
+
+- [set()](#set)
+- [get()](#get)
+- [update()](#update)
+- [setCollection()](#set-collection)
+- [importCollection()](#import-collection)
 - [getShadeFromHex()](#get-shade-from-hex)
 - [getShadeFromVar()](#get-shade-from-vars)
 
 -----------
 
-<h3 id="set-var">setVar()</h3>
+<h3 id="set">set()</h3>
 
 > Allows you to push a variable.
 
@@ -32,19 +58,30 @@ npm i css-vars-manager
 ```javascript
 import { cssVars } from "css-vars-manager";
 
-cssVars.setVar("--interface-size", "1200px");
+cssVars.set({
+    tag: "--interface-size",
+    value: "1200px"
+});
+cssVars.set({
+    tag: "--main-color",
+    color: "#000",
+    shadeCount: 1
+});
 ```
 
 #### Result
 ```css
 html {
-    --interface-size: "1200px";
+    --interface-size: 1200px;
+    --main-color: #000;
+    --main-color-light-1: #222;
+    --main-color-dark-1: #000;
 }
 ```
 
 -----------
 
-<h3 id="set-var">getVar()</h3>
+<h3 id="get">get()</h3>
 
 > Get a variable's value.
 
@@ -52,33 +89,72 @@ html {
 ```css
 html {
     --interface-size: "1200px";
+    --main-color: #000;
 }
 ```
 ```javascript
 import { cssVars } from "css-vars-manager";
 
 console.log(
-    cssVars.getVar("--interface-size")
+    cssVars.get("--interface-size"),
+    cssVars.get("--main-color")
 );
 ```
 
 #### Result
 ```
-console > 1200px
+console > 1200px #000
 ```
 
 -----------
 
-<h3 id="set-colors-collection">setColorsCollection()</h3>
+<h3 id="update">update()</h3>
 
-> Allows to set multiple colors variables from an array.
+> Allows you to update a variable.
+
+If your variable have been add with `color`'s tag, you don't need to specify `shadeCount`'s tag, we use the `shadeCount` you
+used for initialize this variable.
 
 #### Example
 ```javascript
 import { cssVars } from "css-vars-manager";
 
-cssVars.setColorsCollection(
+cssVars.update({
+    tag: "--interface-size",
+    value: "1200px"
+});
+cssVars.update({
+    tag: "--main-color",
+    color: "#FFF",
+});
+```
+
+#### Result
+```css
+html {
+    --interface-size: 1200px;
+    --main-color: #FFF;
+    --main-color-light-1: #FFF;
+    --main-color-dark-1: #DDD;
+}
+```
+
+-----------
+
+<h3 id="set-collection">setCollection()</h3>
+
+> Allows to set multiple css variables from an array.
+
+#### Example
+```javascript
+import { cssVars } from "css-vars-manager";
+
+cssVars.setCollection(
     [
+        {
+            tag: "--logo",
+            value: "url('/static/logo.svg')",
+        },
         {
           tag: "--main-color",  // # Variable's name
           color: "#000",        // # Variable's color
@@ -99,6 +175,7 @@ cssVars.setColorsCollection(
 #### Result
 ```css
 html {
+    --logo: url('/static/logo.svg');
     --main-color: #fff;
     --main-color-light-1: #FFF;
     --main-color-dark-1: #DDD;
@@ -110,52 +187,63 @@ html {
     --sub-color-light-1: #222;
     --sub-color-dark-1: #000;
     --neutral-color: #d5514b;
-};
+}
 ```
 
 -----------
 
-<h3 id="import-vars-collection">importVarsCollection()</h3>
+<h3 id="import-collection">importCollection()</h3>
 
 > Allows to import a variables configuration from JSON file.
 
 #### Example
+
+##### dark.json
+````json
+[
+  {
+    "tag": "--logo",
+    "value": "url('/static/logo_dark.svg')"
+  },
+  {
+    "tag": "--main-color",
+    "color": "#000",
+    "shadeCountolor": 3
+  },
+  {
+    "tag": "--text-color",
+    "color": "#fff",
+    "shadeCountolor": 1
+  },
+  {
+    "tag": "--neutral-color",
+    "color": "#d5514b"
+  }
+]
+````
+
 ```javascript
 import { cssVars } from "css-vars-manager";
 
 cssVars.importVarsCollection("/static/theme/dark.json");
 ```
 
------------
-
-<h3 id="set-color">setColor()</h3>
-
-> Allows you to set a variable's color.
-
-#### Example
-```javascript
-import { cssVars } from "css-vars-manager";
-
-cssVars.setColor(
-        {
-          tag: "--main-color",  // # Variable's name
-          color: "#000",        // # Variable's color
-          shadeCount: 3,        // # Number of shades (light and darkness)
-        },
-);
-```
-
------------
-
-<h3 id="update-color">updateColor()</h3>
-
-> Allows you to update a variable's color (and shades).
-
-#### Example
-```javascript
-import { cssVars } from "css-vars-manager";
-
-cssVars.updateColor("--main-color", "#000");
+#### Result
+```css
+html {
+    --logo: url('/static/logo_dark.svg');
+    --main-color: #000;
+    --main-color-light-1: #FFF;
+    --main-color-dark-1: #DDD;
+    --main-color-light-2: #FFF;
+    --main-color-dark-2: #BBB;
+    --main-color-light-3: #FFF;
+    --main-color-dark-3: #999;
+    --text-color: #fff;
+    --text-color-light-1: #222;
+    --text-color-dark-1: #000;
+    --neutral-color: #d5514b;
+}
 ```
 
 -----------
